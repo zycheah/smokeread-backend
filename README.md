@@ -4,7 +4,7 @@ REST API for the Firefighter Safety Data Hub, a platform that collects firefight
 
 The API is built with **FastAPI**, **SQLAlchemy 2** and **Alembic** on **PostgreSQL**, and uses **Amazon SES** for transactional email.
 
-The client applications live in the companion repository **`firefighter-data-hub-frontend`**.
+The client applications live in the companion repository **`smokeread-frontend`**.
 
 ---
 
@@ -117,8 +117,8 @@ python3.11 --version
 ### Step 2: Clone the repository
 
 ```bash
-git clone <repository-url> firefighter-data-hub-backend
-cd firefighter-data-hub-backend
+git clone https://github.com/zycheah/smokeread-backend.git
+cd smokeread-backend
 ```
 
 ### Step 3: Create a virtual environment and install dependencies
