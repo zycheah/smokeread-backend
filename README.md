@@ -1,6 +1,6 @@
-# Firefighter Safety Data Hub — Backend
+# SmokeRead — Backend
 
-REST API for the Firefighter Safety Data Hub, a platform that collects firefighter exposure data from a mobile app and makes it available to researchers through a web dashboard.
+REST API for SmokeRead, a platform that collects firefighter exposure data from a mobile app and makes it available to researchers through a web dashboard.
 
 The API is built with **FastAPI**, **SQLAlchemy 2** and **Alembic** on **PostgreSQL**, and uses **Amazon SES** for transactional email.
 

@@ -86,7 +86,7 @@ sudo nano /etc/systemd/system/firefighter.service
 
 ```ini
 [Unit]
-Description=Firefighter Safety Data Hub API
+Description=SmokeRead API
 After=network.target
 
 [Service]
