@@ -18,7 +18,16 @@ from app.services.email_templates import (
 
 class EmailService:
     def __init__(self) -> None:
-        self.client = boto3.client("ses", region_name=settings.SES_REGION)
+        # Optional dedicated credentials, e.g. for SES in another AWS account.
+        credentials = (
+            {
+                "aws_access_key_id": settings.SES_ACCESS_KEY_ID,
+                "aws_secret_access_key": settings.SES_SECRET_ACCESS_KEY,
+            }
+            if settings.SES_ACCESS_KEY_ID and settings.SES_SECRET_ACCESS_KEY
+            else {}
+        )
+        self.client = boto3.client("ses", region_name=settings.SES_REGION, **credentials)
 
     def send_email(
         self,
@@ -63,7 +72,7 @@ class EmailService:
     ) -> bool:
         return self.send_email(
             to_email=to_email,
-            subject="Welcome to Firefighter Data Hub - Please Verify Your Email Address",
+            subject="Welcome to SmokeRead - Please Verify Your Email Address",
             html_body=welcome_verification_email_html(full_name, token),
             text_body=welcome_verification_email_text(full_name, token),
         )
@@ -75,7 +84,7 @@ class EmailService:
     ) -> bool:
         return self.send_email(
             to_email=to_email,
-            subject="Firefighter Data Hub - Login Notification",
+            subject="SmokeRead - Login Notification",
             html_body=login_notification_email_html(full_name),
             text_body=login_notification_email_text(full_name),
         )
@@ -87,7 +96,7 @@ class EmailService:
     ) -> bool:
         return self.send_email(
             to_email=to_email,
-            subject="Firefighter Data Hub - Account Deletion Confirmation",
+            subject="SmokeRead - Account Deletion Confirmation",
             html_body=account_deleted_email_html(full_name),
             text_body=account_deleted_email_text(full_name),
         )
@@ -99,7 +108,7 @@ class EmailService:
     ) -> bool:
         return self.send_email(
             to_email=to_email,
-            subject="Firefighter Data Hub - Password Change Request Initiated",
+            subject="SmokeRead - Password Change Request Initiated",
             html_body=password_reset_requested_email_html(full_name),
             text_body=password_reset_requested_email_text(full_name),
         )
@@ -111,7 +120,7 @@ class EmailService:
     ) -> bool:
         return self.send_email(
             to_email=to_email,
-            subject="Firefighter Data Hub - Password Updated Successfully",
+            subject="SmokeRead - Password Updated Successfully",
             html_body=password_changed_email_html(full_name),
             text_body=password_changed_email_text(full_name),
         )

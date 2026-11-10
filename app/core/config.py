@@ -17,8 +17,11 @@ class Settings(BaseSettings):
 
     # SES / email settings
     SES_REGION: str = "us-east-1"
-    SES_FROM_NAME: str = "Firefighter-DataHub-Team"
+    SES_FROM_NAME: str = "SmokeRead"
     SES_FROM_EMAIL: str
+    # Optional; when unset, boto3's default credentials are used.
+    SES_ACCESS_KEY_ID: str | None = None
+    SES_SECRET_ACCESS_KEY: str | None = None
 
     # Used for email verification tokens
     EMAIL_TOKEN_SECRET: str
